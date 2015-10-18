@@ -20,7 +20,7 @@ class Event implements Model
     {
         $statement = 'INSERT INTO events (NAME, DATE, DESCRIPTION) VALUES (:name, :date, :description)';
         try {
-            $prepared = $database->prepare($statement);
+            $prepared = Database::getInstance()->prepare($statement);
             $prepared->bindParam(':name', $this->name);
             $prepared->bindParam(':date', $this->datetime);
             $prepared->bindParam(':description', $this->description);

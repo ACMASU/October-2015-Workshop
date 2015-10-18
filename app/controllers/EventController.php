@@ -8,7 +8,8 @@ class EventController extends Controller
     /**
      * Fetches events
      */
-    function index(){
+    function index()
+    {
         $events = Event::all();
         header('Content-type:application/json');
         print(json_encode($events));
@@ -17,21 +18,24 @@ class EventController extends Controller
     /**
      * Creates new event
      */
-    function store($datetime, $description){
+    function store($name, $datetime, $description)
+    {
 
     }
 
     /**
      *  Replaces existing event with new event
      */
-    function update($id, $datetime, $description){
+    function update($id, $datetime, $description)
+    {
 
     }
 
     /**
      * Deletes existing event
      */
-    function destroy($id){
+    function destroy($id)
+    {
 
     }
 
