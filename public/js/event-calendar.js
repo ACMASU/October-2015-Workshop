@@ -104,7 +104,11 @@ $(document).ready(function () {
             render();
         };
 
-
+        self.sort = function () {
+            self.events.sort(function (event1, event2) {
+                return event1.dateObj < event2.dateObj;
+            });
+        };
     }
 
 
