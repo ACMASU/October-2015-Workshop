@@ -2,7 +2,11 @@ $(document).ready(function () {
 
     var $template = $('#events-template');
     var $eventsDiv = $('#events');
+    var $addEventDiv = $('#add-event');
     var template = Handlebars.compile($template.html());
+    var $nameInput = $('#name');
+    var $datetimeInput = $('#datetime');
+    var $descriptionInput = $('#description');
 
     var id = 0;
     var event1 = new Event(
@@ -24,38 +28,49 @@ $(document).ready(function () {
     ]);
 
 
-    $eventsDiv.on('click', 'button#add', function (e) {
-        var name = $('#name').val();
-        var datetime = $('#datetime').val();
-        var description = $('#description').val();
+    $addEventDiv.on('click', 'button#add', function (e) {
+        var name = $nameInput.val();
+        var datetime = $datetimeInput.val();
+        var description = $descriptionInput.val();
 
-        var event = new Event(name, datetime, description);
-        eventList.addEvent(event)
-        render();
+        try {
+            var event = new Event(name, datetime, description);
+            eventList.addEvent(event)
+            $nameInput.val('');
+            $datetimeInput.val('');
+            $descriptionInput.val('');
+            render();
+        } catch (error) {
+            alert(error);
+            $datetimeInput.get(0).focus();
+        }
     });
 
-    $eventsDiv.on('click', 'button.remove', function (e) {
+    $eventsDiv.on('click', '.event-remove button', function (e) {
         var id = $(this).data('eventid');
         eventList.removeEvent(id);
         render();
     });
 
-    function newId(){
+    function newId() {
         return ++id;
     }
 
     function Event(name, datetime, description) {
         var self = this;
-        self.name = name;
-        self.datetime = datetime;
-        self.description = description;
 
         self.setName = function (name) {
             self.name = name;
         };
 
         self.setDatetime = function (datetime) {
-            self.datetime = datetime;
+            var date = new Date(Date.parse(datetime));
+            if (date != "Invalid Date") {
+                self.datetime = date.toDateString();
+                self.dateObj = date;
+            } else {
+                throw "Invalid date."
+            }
         };
 
         self.setDescription = function (description) {
@@ -65,6 +80,10 @@ $(document).ready(function () {
         self.setId = function (id) {
             self.id = id;
         };
+
+        self.setName(name);
+        self.setDatetime(datetime);
+        self.setDescription(description);
     }
 
     function EventList(events) {
@@ -83,7 +102,9 @@ $(document).ready(function () {
                 return id != event.id;
             });
             render();
-        }
+        };
+
+
     }
 
 

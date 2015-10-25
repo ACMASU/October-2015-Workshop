@@ -20,12 +20,12 @@ module.exports = {
         }
     },
     "files": [
-        'public/assets/css/*.css'
+        'public/assets/css/base.css'
     ],
     "watchOptions": {},
     "server": false,
     "proxy": {
-        host: '192.168.10.10'
+        target: 'localhost:3000'
     },
     "port": 3000,
     "middleware": false,
