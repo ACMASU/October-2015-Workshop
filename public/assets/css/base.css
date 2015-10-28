@@ -7,6 +7,8 @@ body {
 
 main {
     padding: 0 2em 1em 2em;
+    max-width: 60%;
+    margin: 0 auto;
 }
 
 .event {
@@ -47,11 +49,12 @@ main {
 
 #add-event {
     border: none;
-    margin: 1em;
+    margin: 1em auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    max-width: 60%;
 }
 
 #add-event legend {
