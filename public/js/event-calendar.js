@@ -65,11 +65,7 @@ $(document).ready(function () {
     /* Cache DOM */
     // Template for events list
     var $template = $('#events-template');
-
-    // Compiling into Handlebars template object
     var template = Handlebars.compile($template.html());
-
-    // Section that receives rendered template
     var $eventsDiv = $('#events');
 
     // Section for adding new events

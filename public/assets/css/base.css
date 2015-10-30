@@ -7,7 +7,7 @@ body {
 
 main {
     padding: 0 2em 1em 2em;
-    max-width: 60%;
+    max-width: 800px;;
     margin: 0 auto;
 }
 
@@ -54,7 +54,7 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    max-width: 60%;
+    max-width: 700px;
 }
 
 #add-event legend {
